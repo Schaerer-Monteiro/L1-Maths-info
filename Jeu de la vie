@@ -1,0 +1,57 @@
+n = 3
+T = [ 0 for i in range(n)]
+T=[0,1,0]
+print(T)
+
+def oneStep(T):
+    nueva_fila = [0] * len(T) #Creamos una nueva fila del mismo tamaño, inicialmente vacía
+    for i in range(0, len(T)): #crear una fila que va desde index 0 al n. index del mismo valor de T
+      vlife=0
+        #define
+      gauche = T[i - 1] if i > 0 else 0  # Vecino de la izquierda (0 si está fuera de límites)
+      droite = T[i + 1] if i < len(T) - 1 else 0  # Vecino de la derecha (0 si está fuera de límites)
+
+      if T[i] == 1:  # Célula viva
+            if gauche == 1 or droite == 1:
+                nueva_fila[i] = 1  # Se mantiene viva si tiene al menos un vecino vivo
+            else:
+                nueva_fila[i] = 0  # Se muere
+      else:  # Célula muerta
+            if gauche == 1 and droite == 1:
+                nueva_fila[i] = 1  # Revive si tiene dos vecinos vivos
+            else:
+                nueva_fila[i] = 0  # Sigue muerta
+    print("Nueva fila después de un paso:", nueva_fila)  # Imprimir la nueva fila
+    return nueva_fila
+
+
+# Llamar a la función para ver el resultado
+nueva_fila = oneStep(T)
+
+line=nueva_fila
+import os
+from os import system
+from time import sleep
+def afficheLigne(T):
+  line="".join(['\u2588' if i==1 else " " for i in T])
+  print(line)
+  sleep(0.5)
+  os.system("cls" if os.name == "nt" else "clear")  # Limpiar la pantalla
+
+def sim(T):
+  #toma una celda como parametro (nueva fila)
+    #definir el estado inicial
+  currentState = T
+  while True:
+      afficheLigne(currentState)  # Mostrar el estado actual
+      new_state = oneStep(currentState)  # Calcular el siguiente estado
+      if new_state == currentState:
+        break
+      currentState = new_state  # Actualizar el estado actual
+  #muestra sus transformaciones sucesivas
+  #si no hay cambio, se detiene
+
+#ejemplo
+n = 5
+T = [0, 1, 0, 1, 0]  # Estado inicial de las celdas
+sim(T)
