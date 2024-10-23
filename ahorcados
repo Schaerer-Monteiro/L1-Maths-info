@@ -1,0 +1,27 @@
+#definir funcion para ingresar la palabra (tabla de caracteres)
+N = input("introduce la palabra" )
+
+def jeu():
+  #funcion da numero de letras
+  print("numbers of ch:", len(N))
+  #funcion transforma palabra a tabla
+  l = [c for c in N]
+  #inicialisar una lista para las letras adivinadas
+  adv=["/_/" for _ in l]
+  #algoritmo de adivinacion
+
+  while "/_/" in adv:
+    print("palabra", "".join(adv))
+    J = input("Jugador dos, introduce una letra:")
+
+    if J in l:#verificar
+     for i in range(len(l)):
+      if l[i] == J:
+        adv[i]=J
+        print(adv, "good")
+    else:
+      print("bad")
+
+  #si vidas llega a 0, imprime fin del juego. si gana, imprime fin del juego
+  #return l
+jeu()
