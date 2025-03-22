@@ -8,13 +8,14 @@ fonction trouvercentre(E: E: liste, E:n entier, E A racine: entier): c entier
   L<- n*[0]
   
   Pour i allant a 0 a n-1:
-    L[i]<-taille(E)
+    L[i]<-taille(E[i])
    fin pour
   max_degree <- L[0]
   center = 0
   pour i allant de 1 a n-1
     si (max_degree<L[i]) alors
       center<-i
-      
+    fin si
    fin pour
   Return center
+Fin
