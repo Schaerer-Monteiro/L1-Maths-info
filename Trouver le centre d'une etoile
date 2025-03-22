@@ -17,4 +17,4 @@ fonction trouvercentre(E: E: liste, E:n entier, E A racine: entier): c entier
       center<-i
       
    fin pour
-  Return c
+  Return center
